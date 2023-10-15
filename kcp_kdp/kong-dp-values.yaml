@@ -1,0 +1,17 @@
+env:
+  database: "off"
+  role: data_plane
+  cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
+  cluster_cert_key: /etc/secrets/kong-cluster-cert/tls.key
+  cluster_control_plane: my-kong-cp-kong-cluster.kong.svc.cluster.local:8005
+
+secretVolumes:
+- kong-cluster-cert
+
+image:
+  repository: kong
+  tag: 3.4.2-ubuntu
+
+ingressController:
+  enabled: false
+

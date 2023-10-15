@@ -1,0 +1,36 @@
+image:
+  repository: kong
+  tag: 3.4.2-ubuntu
+
+env:
+  role: control_plane
+  cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
+  cluster_cert_key: /etc/secrets/kong-cluster-cert/tls.key
+  database: postgres
+  pg_host: postgres.kong.svc.cluster.local
+  pg_port: 5432
+  pg_user: kong
+  pg_password: kong
+  cluster_listen: 0.0.0.0:8005
+
+secretVolumes:
+- kong-cluster-cert
+
+cluster:
+  enabled: true
+  tls:
+    enabled: true
+
+admin:
+  enabled: true
+  http:
+    enabled: true
+
+proxy:
+  enabled: true
+
+ingressController:
+  installCRDs: true
+  env:
+    publish_service: kong/my-kong-dp-kong-proxy
+
