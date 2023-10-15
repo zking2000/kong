@@ -1,0 +1,10 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: rate-limiting-plugin
+  namespace: kong
+config:
+  second: 5
+  minute: 30
+  hour: 500
+plugin: rate-limiting
