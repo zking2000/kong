@@ -4,7 +4,7 @@
 request_url() {
     count=0
     while [ $count -lt 100 ]; do
-        response_code=$(curl -o /dev/null -s -w "%{http_code}" http://52.190.26.254/httpd)
+        response_code=$(curl -o /dev/null -s -w "%{http_code}" http://httpd.stephende.top)
         echo "HTTP Response Code: $response_code"
         count=$((count+1))
     done
